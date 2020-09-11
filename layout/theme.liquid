@@ -1,0 +1,120 @@
+<!doctype html>
+<!--[if (gt IE 9)|!(IE)]><!-->
+  <html class="no-js" lang="{{ request.locale.iso_code }}">
+<!--<![endif]-->
+
+  <head>
+    <!-- Blockshop Theme - Version 6.4.1 by Troop Themes - https://troopthemes.com/ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    {% if page_description %}
+      <meta name="description" content="{{ page_description }}">
+    {% endif %}
+
+    {% render 'framework--social-meta-tags' %}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com">
+
+    {% if settings.favicon != blank %}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {% endif %}
+
+    {% if template == 'index' %}
+      <title>{{ page_title }}</title>
+    {% elsif template == 'password' %}
+      <title>{{ shop.name }}</title>
+    {% else %}
+      <title>{{ page_title }} | {{ shop.name }}</title>
+    {% endif %}
+
+    {{ content_for_header }}
+
+    {% render 'framework--css-variables' %}
+    {% render 'partial--css-variables' %}
+
+    {{ "theme.css" | asset_url | stylesheet_tag }}
+    {{ 'theme--customizations.css' | asset_url | stylesheet_tag }}
+
+    {% render 'partial--js-variables' %}
+
+    {{ 'lazysizes.min.js' | asset_url | script_tag }}
+
+    {% if template contains 'customers' %}
+      {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+      {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+    {% endif %}
+
+    {{ "theme.min.js" | asset_url | script_tag }}
+<meta name="p:domain_verify" content="3d93fbdaf34cf7180e93b828b0db35f1"/>
+	<script>
+  (function() {
+    var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true;
+    ta.src = 'https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=BTAIESJ0ONP9VR5G6T7G';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ta, s);
+  })();
+</script>
+  
+    
+    </head>
+
+  <body
+    class="page-{{ page_title | handle }} {% if customer %}customer-logged-in {% endif %}template-{{ template | split: '.' | first | remove: '/' | remove: '_' }}"
+    data-theme-id="606"
+    data-theme-name="Blockshop"
+    data-theme-version="6.4.1"
+  >
+    <div
+      class="off-canvas--viewport"
+      data-js-class="OffCanvas"
+      data-off-canvas--state="closed"
+    >
+      <div class="off-canvas--overlay"></div>
+      <div class="off-canvas--close">
+        {% render 'framework--icons', icon: 'cross' %}
+      </div>
+
+      <div class="off-canvas--left-sidebar">
+        {% render 'partial--mobile-nav' %}
+      </div>
+
+      <div class="off-canvas--right-sidebar">
+        {% if settings.cart--type == 'drawer' %}
+          {% render 'framework--cart', view: 'mobile' %}
+        {% endif %}
+      </div>
+
+      <div class="off-canvas--main-content">
+        {% section 'announcement' %}
+        {% section 'header' %}
+
+        <section class="main-content">
+          {{ content_for_layout }}
+        </section>
+
+        {% section 'framework--footer' %}
+
+        {% unless template == 'password' %}
+          <div class="popup-modal-close">&#x2715;</div>
+          <div class="popup-modal-mask"></div>
+        {% endunless %}
+
+        <!--<style> iframe#admin_bar_iframe { display: none !important; } </style>-->
+      </div>
+
+      {% render 'framework--feedback-bar' %}
+
+      {% render 'partial--popup' %}
+
+    </div>
+
+    {% render 'framework--search', view: 'modal' %}
+
+    {% render 'framework--modal' %}
+
+  <!-- This line added automatically by JSON-LD for SEO. -->{% include 'jsonld-for-seo' %}
+</body>
+</html>

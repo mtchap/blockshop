@@ -1,0 +1,59 @@
+<div class="product-page--unavailable">
+  {% unless product.has_only_default_variant %}
+    <p class="error font--paragraph">{{ 'products.sold_out.variant' | t }}</p>
+  {% else %}
+    <p class="error font--paragraph">{{ 'products.sold_out.product' | t }}</p>
+  {% endunless %}
+
+  {% if form_show %}
+    {% form 'contact', id: 'contact_unavailable' %}
+
+      {% if form.posted_successfully? %}
+        <p class="success font--paragraph">
+          {{ 'products.sold_out.form_notification' | t }}
+        </p>
+      {% else %}
+        <p class="font--paragraph">
+          {{ 'products.sold_out.form_description' | t }}
+        </p>
+      {% endif %}
+
+      {% if form.errors %}
+        <div class="error feedback font--paragraph">
+          <p>{{ 'products.sold_out.feedback_invalid_email' | t }}</p>
+        </div>
+      {% endif %}
+
+      {% unless form.posted_successfully? %}
+        <div class="product-page--notify clearfix">
+          <label for="contact_unavailable_email" class="hidden">
+            {{ 'products.sold_out.email_placeholder' | t }}
+          </label>
+          <input
+            class="{% if form.errors contains 'email' %}error{% endif %}"
+            type="email"
+            name="contact[email]"
+            placeholder="{{ 'products.sold_out.email_placeholder' | t }}"
+            value="{{ customer.email }}"
+            id="contact_unavailable_email"
+            required
+          >
+          <input
+            class="email-body"
+            type="hidden"
+            name="contact[body]"
+            value="{{ 'products.sold_out.email_description' | t }}: {{ product.title | escape }}"
+          >
+          <input
+            class="font--button"
+            style=""
+            type="submit"
+            value="{{ 'products.sold_out.button' | t }}"
+          >
+        </div>
+      {% endunless %}
+
+    {% endform %}
+  {% endif %}
+
+</div>

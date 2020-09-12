@@ -4,8 +4,8 @@
     "theme_name": "Blockshop",
     "theme_author": "Troop Themes",
     "theme_version": "6.4.1",
-    "theme_documentation_url": "https://support.troopthemes.com/guide/getting-started/",
-    "theme_support_url": "http://support.troopthemes.com/"
+    "theme_documentation_url": "https:\/\/support.troopthemes.com\/guide\/getting-started\/",
+    "theme_support_url": "http:\/\/support.troopthemes.com\/"
   },
   {
     "name": "Colors",
@@ -315,37 +315,37 @@
         "type": "text",
         "id": "social--facebook--url",
         "label": "Facebook",
-        "info": "https://www.facebook.com/shopify"
+        "info": "https:\/\/www.facebook.com\/shopify"
       },
       {
         "type": "text",
         "id": "social--twitter--url",
         "label": "Twitter",
-        "info": "https://twitter.com/shopify"
+        "info": "https:\/\/twitter.com\/shopify"
       },
       {
         "type": "text",
         "id": "social--instagram--url",
         "label": "Instagram",
-        "info": "https://instagram.com/shopify"
+        "info": "https:\/\/instagram.com\/shopify"
       },
       {
         "type": "text",
         "id": "social--vimeo--url",
         "label": "Vimeo",
-        "info": "https://vimeo.com/shopify"
+        "info": "https:\/\/vimeo.com\/shopify"
       },
       {
         "type": "text",
         "id": "social--pinterest--url",
         "label": "Pinterest",
-        "info": "https://www.pinterest.com/shopify"
+        "info": "https:\/\/www.pinterest.com\/shopify"
       },
       {
         "type": "text",
         "id": "social--youtube--url",
         "label": "Youtube",
-        "info": "https://www.youtube.com/user/shopify"
+        "info": "https:\/\/www.youtube.com\/user\/shopify"
       },
       {
         "type": "image_picker",
